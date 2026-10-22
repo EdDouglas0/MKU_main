@@ -1,0 +1,26 @@
+name: Ed CDCI
+
+on:
+  schedule:
+    - cron: "10 11 * * 1-5"   # Every weekday at 11:00 UTC
+
+jobs:
+  auto-run:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      
+      - name: Run training experiments
+        run: python model_training/train_experiments.py
