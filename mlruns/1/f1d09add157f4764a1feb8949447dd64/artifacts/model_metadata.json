@@ -1,0 +1,16 @@
+{
+  "feature_columns": [
+    "total_bill",
+    "size",
+    "sex_Female",
+    "smoker_No",
+    "day_Fri",
+    "day_Sat",
+    "day_Sun",
+    "time_Dinner"
+  ],
+  "parameters": {
+    "fit_intercept": true,
+    "positive": true
+  }
+}
