@@ -1,3 +1,5 @@
+# 0 - Importing
+
 import os
 
 import numpy as np
@@ -11,6 +13,7 @@ from sklearn.preprocessing import StandardScaler
 
 from starter import baseline_model
 
+# 1 - Testing
 
 def test_evaluate_regression_model_returns_metrics():
 	model = DummyRegressor(strategy="constant", constant=0)
