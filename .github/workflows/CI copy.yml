@@ -2,7 +2,7 @@ name: Ed CDCI
 
 on:
   schedule:
-    - cron: "20,21,23,24,25 11,12,13 * * 1-5"   # Every weekday at 11:00 UTC
+    - cron: "20,25,30 11,12,13 * * 1-5"   # Every weekday at 11:00 UTC
 
 jobs:
   auto-run:
