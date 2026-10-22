@@ -2,7 +2,7 @@ name: Ed CDCI
 
 on:
   schedule:
-    - cron: "10 11 * * 1-5"   # Every weekday at 11:00 UTC
+    - cron: "20 11,12,13 * * 1-5"   # Every weekday at 11:00 UTC
 
 jobs:
   auto-run:
@@ -22,5 +22,16 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
       
+      - name: Record artifact timestamp
+        id: timestamp
+        run: echo "value=$(date -u +'%Y%m%d-%H%M%S')" >> "$GITHUB_OUTPUT"
+
       - name: Run training experiments
         run: python model_training/train_experiments.py
+
+      - name: Upload trained model artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: best-regression-model-${{ steps.timestamp.outputs.value }}
+          path: artifacts/best_model.joblib
+          if-no-files-found: error
